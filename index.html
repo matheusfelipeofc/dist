@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Log Viewer</title>
+
+</head>
+
+<body>
+
+    <h1>Log Viewer</h1>
+
+    <button id="mostrarLog">Mostrar Log</button>
+
+    <pre id="log"></pre>
+
+
+
+    <script>
+
+        // Função para fazer uma solicitação HTTP e exibir o log
+
+        document.getElementById('mostrarLog').addEventListener('click', function() {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', 'log.txt', true);
+
+
+
+            xhr.onreadystatechange = function() {
+
+                if (xhr.readyState === 4 && xhr.status === 200) {
+
+                    var logText = xhr.responseText;
+
+                    document.getElementById('log').textContent = logText;
+
+                }
+
+            };
+
+
+
+            xhr.send();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
